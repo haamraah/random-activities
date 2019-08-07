@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        // define an array with 8 values ------ remember first index is 0 and last one is 7
+        var myFavBands = ["archive", "mh project", "brith floyd", "pink floyd", "the beatles", "iron maiden", "guns n roses", "metallica"];
+        // console.log(myFavBands);
+
+
+        // define a new variable (yourBrand) and assign a value coming from a Prompt , and make it all lower case
+        var yourBand = prompt("what is your favorite band?", "e.g Metallica").toLowerCase();
+        // console.log(yourBand.toLowerCase());
+
+
+        // first BAD way is using ifElse , in this case we should check every single membre of the array one by one (absolutly not recommanded)
+
+
+
+        // if (myFavBands[0] == yourBand) {
+        //     alert("we have the same favorite band");
+        // }
+        // else if (myFavBands[1] == yourBand) {
+        //     alert("we have the same favorite band");
+        // }
+        // else if (myFavBands[2] == yourBand) {
+        //     alert("we have the same favorite band");
+        // }
+        // else if (myFavBands[3] == yourBand) {
+        //     alert("we have the same favorite band");
+        // }
+        // else if (myFavBands[4] == yourBand) {
+        //     alert("we have the same favorite band");
+        // }
+        // else if (myFavBands[5] == yourBand) {
+        //     alert("we have the same favorite band");
+        // }
+        // else if (myFavBands[6] == yourBand) {
+        //     alert("we have the same favorite band");
+        // }
+        // else if (myFavBands[7] == yourBand) {
+        //     alert("we have the same favorite band");
+        // }
+        // else {
+        //     alert("sorry your band is @#$@#$@#");
+        // }
+
+
+
+
+        // other method is to use a for loop 
+        //
+        // findIt boolien is to see if we find a mach or not  
+        var findIt = false;
+        var counter ;
+        // for loop statment ,
+        for (counter=0; counter <= myFavBands.length - 1; counter++) {
+            if (myFavBands[counter] == yourBand) {
+                console.log(myFavBands[counter]);
+                alert("we have the same favorite band");
+                findIt = true;
+            }
+
+        }
+        if (findIt == false) {
+            alert("sorry your band is @#$@#$@#");
+        }
+    </script>
+</body>
+
