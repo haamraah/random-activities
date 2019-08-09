@@ -84,17 +84,14 @@
         </div>
 
     </div>
-    <!-- <style>
-    Img {
-        visibility: hidden;
-    }
-    </style> -->
+
+
     <!-- my javascript -->
     <script>
         // this array holds AI and user options
         var Opt = ["rockImgAi", "paperImgAi", "scissorsImgAi", "rockImgUsr", "paperImgUsr", "scissorsImgUsr"];
         var ties = 0, scores = 0, losses = 0;
-        // this function i clearing the screen by changing the visibility to hidden on each img
+        //  clearing the screen by changing the visibility to hidden on each img
         function clearimg() {
             for (var i = 0; i < Opt.length; i++) {
 
@@ -110,34 +107,30 @@
             var random = Math.floor(Math.random() * 3);
             document.getElementById(Opt[random]).style.visibility = "visible";
 
-            // we can compare index (user chose) and random (Ai chose) here index can be 3,4 or 
+            // we can compare index (user chose) and random (Ai chose) here index can be 3,4 or 5
             //  (3r,4p,5s) and random can be 0,1 or 2 (0r,1p,2s)
             if ((index - 3) === random) {
+                // we add to our variables and push it to html document using DOM
                 ties++;
                 document.getElementById("tie").textContent = ties;
-                document.getElementById("tie").style.animationName= "blink";
-                document.getElementById("tie").style.animationDuration = "1s";
 
-              
+
 
 
             } else if (index == 3 && random == 2 || index == 4 && random == 0 || index == 5 && random == 1) {
+                // we add to our variables and push it to html document using DOM
+
                 scores++;
                 document.getElementById("score").textContent = scores;
-                document.getElementById("score").style.fontSize="20";
-                document.getElementById("score").style.transition="0.8s";
-                document.getElementById("score").style.fontSize="14";
-                document.getElementById("score").style.transition="0.8s";
 
 
-            } else if(index == 5 && random == 0 || index == 3 && random == 0 || index == 4 && random == 2)
-            {
+
+            } else if (index == 5 && random == 0 || index == 3 && random == 0 || index == 4 && random == 2) {
+                // we add to our variables and push it to html document using DOM
+
                 losses++;
                 document.getElementById("losses").textContent = losses;
-                document.getElementById("losses").style.fontSize="20";
-                document.getElementById("losses").style.transition="0.8s";
-                document.getElementById("losses").style.fontSize="14";
-                document.getElementById("losses").style.transition="0.8s";
+
 
             }
 
