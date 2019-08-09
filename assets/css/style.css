@@ -1,0 +1,23 @@
+.myImg {
+    visibility: hidden;
+    
+}
+#rockImgUsr,
+#paperImgUsr,
+#scissorsImgUsr
+{
+    transform: rotate(180deg);
+}
+@keyframes blink {
+    0% {color: black;}
+    50% {color: white;}
+    100% {color: black;}
+
+  }
+  #tie,
+  #score,
+  #losses{
+      
+      animation-name: blink;
+      animation-duration: 2s;
+  }

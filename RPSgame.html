@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- viewport metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- We set the page title here -->
+    <title>Rock Paper Scissors</title>
+    <!-- link to Bootstrap  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- main container that we use for everything else -->
+    <div class="container">
+        <!-- this is first row out of 3 where i have my navbar -->
+        <div class="row mb-1 mt-1">
+            <div class="col-12 ">
+                <!-- there is just 1 column in this row / bootstrap navbar below  -->
+                <div class="card-header rounded-lg border border-primary">
+                    Rock Paper Scissors
+                </div>
+            </div>
+        </div>
+        <!-- this is second row out of 3 where i have my main content -->
+
+        <div class="row">
+            <div class="col ">
+                <!-- i used rounded-lg border border-primary classes for customizing border -->
+                <div class="container mt-3 mb-3 p-3 rounded-lg border border-primary ">
+                    <div class="row">
+                        <div class="col d-flex justify-content-center ">
+
+                            <img class="myImg" id="rockImgAi" src="assets/img/rock.png" class="img-tumbnail">
+                            <img class="myImg" id="paperImgAi" src="assets/img/paper.png" class="img-tumbnail">
+                            <img class="myImg" id="scissorsImgAi" src="assets/img/scissors.png" class="img-tumbnail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+
+                            <img class="myImg" id="rockImgUsr" src="assets/img/rock.png" class="img-tumbnail">
+                            <img class="myImg" id="paperImgUsr" src="assets/img/paper.png" class="img-tumbnail">
+                            <img class="myImg" id="scissorsImgUsr" src="assets/img/scissors.png" class="img-tumbnail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center m-2">
+                            <!-- each button calls multiple function onClick -->
+                            <div class="btn-group ">
+                                <button onclick="clearimg() ;showImg(3)" type="button"
+                                    class="btn btn-outline-primary btn-lg">&nbsp;&nbsp;Rock&nbsp;</button>
+                                <button onclick="clearimg() ;showImg(4)" type="button"
+                                    class="btn btn-outline-primary btn-lg">&nbsp;Paper&nbsp;</button>
+                                <button onclick=" clearimg() ;showImg(5)" type="button"
+                                    class="btn btn-outline-primary btn-lg">Scissors</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- this is third row out of 3 where i have my footer -->
+
+        <div class="row">
+            <div class="col">
+                <!-- i used rounded-lg border border-primary classes for customizing border -->
+                <footer class="footer mt-auto py-3 bg-light rounded-lg border border-primary">
+                    <div class="container ">
+                        <span class="text-muted">Score: </span><span id="score">0</span>
+                        <span class="text-muted"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tie: </span><span id="tie">0</span>
+
+                        <span class="text-muted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Losses: </span><span id="losses">0</span>
+
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- <style>
+    Img {
+        visibility: hidden;
+    }
+    </style> -->
+    <!-- my javascript -->
+    <script>
+        // this array holds AI and user options
+        var Opt = ["rockImgAi", "paperImgAi", "scissorsImgAi", "rockImgUsr", "paperImgUsr", "scissorsImgUsr"];
+        var ties = 0, scores = 0, losses = 0;
+        // this function i clearing the screen by changing the visibility to hidden on each img
+        function clearimg() {
+            for (var i = 0; i < Opt.length; i++) {
+
+                document.getElementById(Opt[i]).style.visibility = "hidden";
+
+            }
+        }
+        // this function shows the image related to the button
+        function showImg(index) {
+
+            document.getElementById(Opt[index]).style.visibility = "visible";
+            // generate a random intiger between 0 and 2 and show the corresponding image 
+            var random = Math.floor(Math.random() * 3);
+            document.getElementById(Opt[random]).style.visibility = "visible";
+
+            // we can compare index (user chose) and random (Ai chose) here index can be 3,4 or 
+            //  (3r,4p,5s) and random can be 0,1 or 2 (0r,1p,2s)
+            if ((index - 3) === random) {
+                ties++;
+                document.getElementById("tie").textContent = ties;
+                document.getElementById("tie").style.animationName= "blink";
+                document.getElementById("tie").style.animationDuration = "1s";
+
+              
+
+
+            } else if (index == 3 && random == 2 || index == 4 && random == 0 || index == 5 && random == 1) {
+                scores++;
+                document.getElementById("score").textContent = scores;
+                document.getElementById("score").style.fontSize="20";
+                document.getElementById("score").style.transition="0.8s";
+                document.getElementById("score").style.fontSize="14";
+                document.getElementById("score").style.transition="0.8s";
+
+
+            } else if(index == 5 && random == 0 || index == 3 && random == 0 || index == 4 && random == 2)
+            {
+                losses++;
+                document.getElementById("losses").textContent = losses;
+                document.getElementById("losses").style.fontSize="20";
+                document.getElementById("losses").style.transition="0.8s";
+                document.getElementById("losses").style.fontSize="14";
+                document.getElementById("losses").style.transition="0.8s";
+
+            }
+
+        }
+
+
+    </script>
+    <!-- we need this scripts (from bootstrap website) in order to make Hamburger menu work -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
